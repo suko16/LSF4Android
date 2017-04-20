@@ -100,4 +100,6 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    // TODO: Thilo morgen Schoki mitbringen
 }
