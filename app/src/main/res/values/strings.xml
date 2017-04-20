@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">LSF4ANDROID</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+
+    <string name="ausfallende_V">Ausfallende Veranstaltungen</string>
+    <string name="alle_V">Alle Veranstaltungen</string>
+    <string name="eigene_V">Eigene Veranstaltungen</string>
+    <string name="lsf4android">LSF4Android</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_detail">DetailActivity</string>
+
+    <string name="action_settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
