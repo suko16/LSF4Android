@@ -16,6 +16,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -36,6 +37,8 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        //Bei Activitywechseln von StartActivity auf MainActivity
+        // wird zusätzlich richtiges Fragment durch Extra geladen.
         Intent intent = getIntent();
         Fragment fragment = null;
         Class fragmentClass = null;
@@ -55,6 +58,14 @@ public class MainActivity extends AppCompatActivity
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.fragment_main, fragment).commit();
+
+        /*ImageView urLogo = (ImageView) findViewById(R.id.urLogo);
+        urLogo.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                onUrLogoClicked();
+            }
+            });*/
 
     }
 
@@ -123,5 +134,10 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+   /* private void onUrLogoClicked(){
+        Intent i = new Intent(this,StartActivity.class);
+        startActivity(i);
+    }*/
 
 }
