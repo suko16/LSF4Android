@@ -135,9 +135,9 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    private void onUrLogoClicked(){
+   /* private void onUrLogoClicked(){
         Intent i = new Intent(this,StartActivity.class);
         startActivity(i);
-    }
+    }*/
 
 }
