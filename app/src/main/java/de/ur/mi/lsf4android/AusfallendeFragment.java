@@ -112,6 +112,7 @@ public class AusfallendeFragment extends android.support.v4.app.Fragment {
             counter++;
 
             row = new TableRow(getActivity());
+          //  row = (TableRow) getView().findViewById(R.id.row1);
             row.setId(counter);
             row.setLayoutParams(
                     new TableRow.LayoutParams(
@@ -139,6 +140,7 @@ public class AusfallendeFragment extends android.support.v4.app.Fragment {
                     new TableRow.LayoutParams(
                             TableRow.LayoutParams.MATCH_PARENT,
                             TableRow.LayoutParams.WRAP_CONTENT
+
                     )
             );
 

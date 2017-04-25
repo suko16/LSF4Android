@@ -1,10 +1,12 @@
 package de.ur.mi.lsf4android;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.ShareCompat;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -33,6 +35,27 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        Intent intent = getIntent();
+        Fragment fragment = null;
+        Class fragmentClass = null;
+
+        if (intent != null && intent.getBooleanExtra("open_ausfallend_fragment",false)){
+            fragmentClass = AusfallendeFragment.class;
+        } else if (intent != null && intent.getBooleanExtra("open_eigene_fragment",false)){
+            fragmentClass = EigeneFragment.class;
+        } else if (intent != null && intent.getBooleanExtra("open_vorverzeichnis_fragment",false)){
+            fragmentClass = AlleFragment.class;
+        }
+        try {
+            fragment = (Fragment) fragmentClass.newInstance();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.fragment_main, fragment).commit();
+
     }
 
     @Override
@@ -101,5 +124,4 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    // TODO: Thilo morgen Schoki mitbringen
 }
