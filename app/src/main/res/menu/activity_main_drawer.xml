@@ -4,15 +4,12 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_ausfallende_V"
-            android:icon="@drawable/ic_menu_camera"
             android:title="@string/ausfallende_V" />
         <item
             android:id="@+id/nav_alle_V"
-            android:icon="@drawable/ic_menu_gallery"
             android:title="@string/alle_V" />
         <item
             android:id="@+id/nav_eigene_V"
-            android:icon="@drawable/ic_menu_slideshow"
             android:title="@string/eigene_V" />
     </group>
 

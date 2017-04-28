@@ -13,13 +13,14 @@
         android:id="@+id/uni_logo"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_weight="0.7"
+        android:layout_weight="0.3"
         android:src="@mipmap/uni_logo"/>
 
     <TextView
         android:id="@+id/caption"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="0.3"
         android:padding="30dp"
         android:paddingBottom="60dp"
         android:text="LSF4Android"
@@ -31,7 +32,8 @@
     <Button
         android:id="@+id/ausfallende_v_button"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="0.1"
         android:layout_margin="15dp"
         android:background="#1F4C8E"
         android:textColor="#FFFFFF"
@@ -43,7 +45,8 @@
     <Button
         android:id="@+id/eigene_v_button"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="0.1"
         android:layout_margin="15dp"
         android:background="#1F4C8E"
         android:textColor="#FFFFFF"
@@ -56,7 +59,8 @@
     <Button
         android:id="@+id/alle_v_button"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="0.1"
         android:layout_margin="15dp"
         android:background="#1F4C8E"
         android:textColor="#FFFFFF"
