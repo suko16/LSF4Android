@@ -15,7 +15,7 @@ public class StartActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_start2);
+        setContentView(R.layout.activity_start);
         ausfallendeVButton = (Button)findViewById(R.id.ausfallende_v_button);
         eigeneVButton = (Button)findViewById(R.id.eigene_v_button);
         VorVerzeichnisButton = (Button)findViewById(R.id.alle_v_button);
