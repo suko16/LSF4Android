@@ -42,7 +42,4 @@ public class Veranstaltung {
     }
 
 
-
-    // Getter und Setter Methoden
-    // Constructor
 }

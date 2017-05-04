@@ -17,8 +17,10 @@
         android:layout_width="wrap_content"
         android:layout_height="@dimen/ur_logo_height_nav"
         android:adjustViewBounds="true"
+        android:cropToPadding="false"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
-        app:srcCompat="@mipmap/uni_logo" />
+        app:srcCompat="@mipmap/uni_logo"
+        android:clickable="true"/>
 
     <TextView
         android:id="@+id/LSF4Android"

@@ -33,6 +33,7 @@ public class AusfallendeFragment extends android.support.v4.app.Fragment {
     private TableLayout table;
     private TableRow row;
     private int rowCount = 0;
+    private ArrayList<String> htmlList;
 
     public AusfallendeFragment() {
         // Required empty public constructor
@@ -48,15 +49,9 @@ public class AusfallendeFragment extends android.support.v4.app.Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        new DownloadLSFTask().execute("https://lsf.uni-regensburg.de/qisserver/rds?state=currentLectures&type=1&next=CurrentLectures.vm&nextdir=ressourcenManager&navigationPosition=lectures%2CcanceledLectures&breadcrumb=canceledLectures&topitem=lectures&subitem=canceledLectures&&HISCalendar_Date=27.04.2017&asi=");
+        new DownloadLSFTask().execute("https://lsf.uni-regensburg.de/qisserver/rds?state=currentLectures&type=1&next=CurrentLectures.vm&nextdir=ressourcenManager&navigationPosition=lectures%2CcanceledLectures&breadcrumb=canceledLectures&topitem=lectures&subitem=canceledLectures&&HISCalendar_Date=04.05.2017&asi=");
         //title = (TextView) getView().findViewById(R.id.title_tabelle);
         return inflater.inflate(R.layout.fragment_ausfallende, container, false);
-    }
-
-    private void callDetailActivity(String titel) {
-        Intent intent = new Intent(getActivity(), DetailActivity.class);
-        intent.putExtra(DetailActivity.TITEL_EXTRA, titel);
-        startActivity(intent);
     }
 
     private class DownloadLSFTask extends AsyncTask<String, Integer, ArrayList<String[]>> {
@@ -66,6 +61,7 @@ public class AusfallendeFragment extends android.support.v4.app.Fragment {
                 Document doc  = Jsoup.connect(urls[0]).get();
                 Element table = doc.select("table").last();
                 Elements rows = table.select("tr");
+                htmlList = new ArrayList<>();
                 for(Element row : rows) {
                     String[] string_row = new String[3];
                     Elements columns = row.select("td");
@@ -81,6 +77,10 @@ public class AusfallendeFragment extends android.support.v4.app.Fragment {
                                 break;
                             case 3:
                                 string_row[2] = column.select("a").text();
+
+                                //get URL from titel
+                                Element link = column.select("a").first();
+                                htmlList.add(link.attr("href"));
                                 break;
                         }
                         i++;
@@ -94,20 +94,31 @@ public class AusfallendeFragment extends android.support.v4.app.Fragment {
             }
         }
 
+        private void callDetailActivity(String titel, int j) {
+            Intent intent = new Intent(getActivity(), DetailActivity.class);
+            intent.putExtra(DetailActivity.TITEL_EXTRA, titel);
+            intent.putExtra(DetailActivity.HTML_EXTRA,htmlList.get(j));
+            startActivity(intent);
+
+        }
+
         protected void onPostExecute(ArrayList<String[]> result) {
             // Tabelle in fragment_ausfallende.xml bauen und mit result befüllen
             //String titel = result.get(1)[2];
             //callDetailActivity(titel);
             table = (TableLayout) getView().findViewById(R.id.table);
-            addRow("Beginn", "Ende", "Titel");
+            addRow("Beginn", "Ende", "Titel", 1);
 
             for(int i= 1; i< rowCount ; i++){
                     veranstaltung = new Veranstaltung(result.get(i)[0], result.get(i)[1], result.get(i)[2]);
-                    addRow(veranstaltung.getBeginn(), veranstaltung.getEnde(), veranstaltung.getTitel());
+                    addRow(veranstaltung.getBeginn(), veranstaltung.getEnde(), veranstaltung.getTitel(), i);
             }
         }
 
-        private void addRow (String begin_text, String end_text, String title_text ){
+        private void addRow (String begin_text, String end_text, String title_text, int k){
+
+            //int Wert braucht man, um über Clicklistener richtige URL zu öffnen.
+
             int counter = 0;
             counter++;
 
@@ -133,6 +144,7 @@ public class AusfallendeFragment extends android.support.v4.app.Fragment {
 
             row.addView(begin);
 
+
             ende = new TextView(getActivity());
             ende.setId(counter+200);
             ende.setText(end_text);
@@ -156,11 +168,13 @@ public class AusfallendeFragment extends android.support.v4.app.Fragment {
                     )
             );
 
-            final String ueberschrift = title_text;
+            final String header = title_text;
+            final int rowCountHtml = k-1; //richtige Stelle von ArrayList htmlList in CallDetailActivity ansprechen
+
             title.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    callDetailActivity(ueberschrift);
+                    callDetailActivity(header, rowCountHtml);
                 }
             });
             row.addView(title);
@@ -170,8 +184,8 @@ public class AusfallendeFragment extends android.support.v4.app.Fragment {
                     TableLayout.LayoutParams.WRAP_CONTENT
                     )
             );
-
         }
     }
+
 
 }
