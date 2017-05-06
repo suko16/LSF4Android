@@ -6,14 +6,21 @@ package de.ur.mi.lsf4android;
 
 public class Veranstaltung {
     // Variablen anlegen
-    private String titel;
-    private String beginn;
-    private String ende;
+    public String titel;
+    public String beginn;
+    public String ende;
+    public String number;
 
-    public Veranstaltung(String beginn, String ende, String titel) {
+
+    public Veranstaltung(String beginn, String ende, String number, String titel) {
         this.titel = titel;
         this.beginn = beginn;
         this.ende = ende;
+        this.number = number;
+
+    }
+    public Veranstaltung(){
+        Veranstaltung v = new Veranstaltung("", "", "", "");
     }
 
     public void setTitel(String titel) {
@@ -28,10 +35,9 @@ public class Veranstaltung {
         this.ende = ende;
     }
 
-    public String getTitel() {
+    public void setNumber(String number) {this.number = number;}
 
-        return titel;
-    }
+    public String getTitel() {return titel;   }
 
     public String getBeginn() {
         return beginn;
@@ -41,8 +47,8 @@ public class Veranstaltung {
         return ende;
     }
 
+    public String getNumber() {return number;}
 
 
-    // Getter und Setter Methoden
-    // Constructor
+
 }
