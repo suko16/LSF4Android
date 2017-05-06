@@ -58,7 +58,7 @@ public class AusfallendeFragment extends android.support.v4.app.Fragment {
         new DownloadLSFTask().execute("https://lsf.uni-regensburg.de/qisserver/rds?state=currentLectures&type=1&next=CurrentLectures.vm&nextdir=ressourcenManager&navigationPosition=lectures%2CcanceledLectures&breadcrumb=canceledLectures&topitem=lectures&subitem=canceledLectures&&HISCalendar_Date=27.04.2017&asi=");
 
         View view = inflater.inflate(R.layout.fragment_ausfallende, container, false);
-        table = (TableLayout) view.findViewById(R.id.table);
+        table = (TableLayout) view.findViewById(R.id.table_ausfallende);
 
         return view;
     }

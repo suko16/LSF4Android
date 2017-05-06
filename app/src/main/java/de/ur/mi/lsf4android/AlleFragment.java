@@ -104,7 +104,7 @@ public class AlleFragment extends android.support.v4.app.Fragment //implements V
 
         protected void onPostExecute(ArrayList<String[]> result) {
 
-            table = (TableLayout) getView().findViewById(R.id.table_all);
+            table = (TableLayout) getView().findViewById(R.id.table_alle);
             addRow("Number", "Titel");
 
             for (int i = 1; i < rowCount; i++) {
