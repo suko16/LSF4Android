@@ -44,16 +44,19 @@ public class StartActivity extends AppCompatActivity {
 
     private void clickAusfallend (){
         Intent i = new Intent(this,MainActivity.class);
+        i.putExtra("open_ausfallend_fragment", true);
         startActivity(i);
     }
 
     private void clickEigene (){
         Intent i = new Intent(this,MainActivity.class);
+        i.putExtra("open_eigene_fragment", true);
         startActivity(i);
     }
 
     private void clickVorVerzeichnis (){
         Intent i = new Intent(this,MainActivity.class);
+        i.putExtra("open_vorverzeichnis_fragment", true);
         startActivity(i);
     }
 
